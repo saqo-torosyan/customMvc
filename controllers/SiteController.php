@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\Application;
 use app\core\Controller;
+use app\core\Request;
 
 /**
  * Class SiteController
@@ -35,8 +36,10 @@ class SiteController extends Controller
     /**
      * @return string
      */
-    public function handleContact()
+    public function handleContact(Request $request)
     {
+        $body = $request->getBody();
+        var_dump($body);
         return "function handleContact";
     }
 }
