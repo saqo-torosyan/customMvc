@@ -35,6 +35,16 @@ class Router
     }
 
     /**
+     * @param $path
+     * @param $callback
+     * @return void
+     */
+    public function post($path, $callback)
+    {
+        $this->routes['post'][$path] = $callback;
+    }
+
+    /**
      * @return array|false|mixed|string|string[]
      */
     public function resolve()
@@ -45,7 +55,7 @@ class Router
 
         if ($callback === false) {
             $this->response->setStatusCode(404);
-            return "404 not found";
+            return $this->renderContent("404 not found");
         }
 
         if (is_string($callback)) {
@@ -90,5 +100,15 @@ class Router
         require_once Application::$ROOT_DIR . "/views/$view.php";
 
         return ob_get_clean();
+    }
+
+    /**
+     * @param $viewContent
+     * @return false|string
+     */
+    protected function renderContent($viewContent)
+    {
+        $layoutContent = $this->layoutContent();
+        return str_replace('{{content}}', $viewContent, $layoutContent);
     }
 }
