@@ -1,0 +1,9 @@
+{
+    "name": "arnology/custom-mvc",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
