@@ -33,12 +33,12 @@ class AuthController extends Controller
             var_dump($request->body());
             $registerModel->loadData($request->body());
 var_dump($registerModel);
-exit;
+//exit;
             if ($registerModel->validate() && $registerModel->register()) {
                 return "Success";
             }
         }
-
+        var_dump($registerModel);
         $this->setLayout('auth');
         return $this->render('register', [
             'model' => $registerModel
