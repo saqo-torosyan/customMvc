@@ -107,4 +107,24 @@ abstract class Model
 
         $this->errors[$attribute][] = $errorMessage;
     }
+
+    /**
+     * @param string $attribute
+     * @return false|mixed
+     */
+    public function hasError(string $attribute)
+    {
+        return $this->errors[$attribute] ?? false;
+    }
+
+    /**
+     * @param $attribute
+     * @return mixed|string
+     */
+    public function getFirstError($attribute)
+    {
+        $errors = $this->errors[$attribute] ?? [];
+
+        return $errors[0] ?? '';
+    }
 }
