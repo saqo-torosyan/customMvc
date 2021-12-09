@@ -12,7 +12,7 @@ class Request
     /**
      * @return false|mixed|string
      */
-    public function getPath()
+    public function path()
     {
         $path = $_SERVER['REQUEST_URI'] ?? '/';
         $position = strpos($path, '?');
@@ -27,18 +27,34 @@ class Request
     /**
      * @return string
      */
-    public function getMethod()
+    public function method()
     {
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
 
     /**
+     * @return bool
+     */
+    public function isGet()
+    {
+        return $this->method() === 'get';
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPost()
+    {
+        return $this->method() === 'post';
+    }
+
+    /**
      * @return array
      */
-    public function getBody()
+    public function body()
     {
         $body       = [];
-        $method     = $this->getMethod();
+        $method     = $this->method();
         $params     = [];
         $filterType = INPUT_POST;
 

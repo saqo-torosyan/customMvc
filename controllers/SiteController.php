@@ -38,8 +38,8 @@ class SiteController extends Controller
      */
     public function handleContact(Request $request)
     {
-        $body = $request->getBody();
-        var_dump($body);
+        $body = $request->body();
+
         return "function handleContact";
     }
 }
