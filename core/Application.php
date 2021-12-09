@@ -14,7 +14,24 @@ class Application
     public Router $router;
     public Request $request;
     public Response $response;
+    public Controller $controller;
     public static Application $app;
+
+    /**
+     * @return Controller
+     */
+    public function getController()
+    {
+        return $this->controller;
+    }
+
+    /**
+     * @param Controller $controller
+     */
+    public function setController($controller)
+    {
+        $this->controller = $controller;
+    }
 
     /**
      * @param $rootPath
